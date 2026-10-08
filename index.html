@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>İnwin Sosyal</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 24px 18px;
+      background: #101827;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    .header {
+      text-align: center;
+      padding: 24px 10px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #173b65, #172033);
+      border: 1px solid #c9a64d;
+    }
+
+    .logo { font-size: 42px; }
+    h1 { margin: 10px 0; color: #f1ce72; }
+    p { color: #d3dbea; line-height: 1.5; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .item {
+      padding: 22px 10px;
+      border: 1px solid #34435b;
+      border-radius: 16px;
+      background: #1b2638;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .item span {
+      display: block;
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .item:active { background: #2a3c55; }
+
+    .footer {
+      margin-top: 22px;
+      text-align: center;
+      font-size: 12px;
+      color: #9eacc1;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">🕊️</div>
+    <h1>İNWIN SOSYAL</h1>
+    <p>Etkinlikler, duyurular ve topluluğumuz tek ekranda.</p>
+  </div>
+
+  <div class="grid">
+    <button class="item" onclick="showInfo('🏆 Çekilişler','Güncel çekiliş duyurularını kanalımızdan takip edebilirsin.')">
+      <span>🏆</span>Çekilişler
+    </button>
+    <button class="item" onclick="showInfo('🎁 Günün Sürprizi','Günün sürprizleri burada duyurulacak!')">
+      <span>🎁</span>Günün Sürprizi
+    </button>
+    <button class="item" onclick="showInfo('📢 Duyurular','En son duyurular için İnwin Sosyal kanalını ziyaret et.')">
+      <span>📢</span>Duyurular
+    </button>
+    <button class="item" onclick="showInfo('🎯 Etkinlikler','Yaklaşan etkinlikler burada paylaşılacak.')">
+      <span>🎯</span>Etkinlikler
+    </button>
+    <button class="item" onclick="openChannel()">
+      <span>🔔</span>Kanala Katıl
+    </button>
+    <button class="item" onclick="showInfo('💬 Destek','Destek bölümü yakında aktif olacak.')">
+      <span>💬</span>Destek
+    </button>
+  </div>
+
+  <div class="footer">İNWIN SOSYAL · Topluluğumuza hoş geldin</div>
+
+  <script>
+    const tg = window.Telegram.WebApp;
+    tg.ready();
+    tg.expand();
+
+    function showInfo(title, message) {
+      if (tg.showAlert) {
+        tg.showAlert(title + "\n\n" + message);
+      } else {
+        alert(title + "\n\n" + message);
+      }
+    }
+
+    function openChannel() {
+      tg.openTelegramLink("https://t.me/inwinsosyal");
+    }
+  </script>
+</body>
+</html>
